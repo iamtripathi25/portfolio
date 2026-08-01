@@ -1,5 +1,11 @@
 export const WorkData=[
-
+   {
+        'position':'Software Engineer - Backend',
+        'company':'Stealth Healthtech Startup',
+        'smallDesc':'Building a secure, scalable serverless AI Healthtech platform a Stanford spin-off project.',
+        'date':'Nov 2025'
+        
+    },
    {
         'position':'Java Developer',
         'company':'Tata Consultancy Services',
