@@ -13,8 +13,8 @@ function ContactPage() {
         <div className=' flex flex-row justify-between items-center text-[4vw] md:text-[2.5vw] lg:text-[2vw] xl:text-[1.4vw]'>
             <div>
             <a target='_blank' href="https://twitter.com/Iamtripathi25" className='mx-[1vw] py-[0.5vh]   font-semibold '>Twitter</a>
-            <a target='_blank' href="https://www.linkedin.com/in/aman-tripathi-6ba35a191/" className='mx-[1vw] py-[0.5vh]   font-semibold'>LinkedIn</a>
-            <a target='_blank' href="https://github.com/Tripathiaman2511" className='mx-[1vw] py-[0.5vh]   font-semibold '>Github</a>
+            <a target='_blank' href="https://www.linkedin.com/in/iamtripathi25" className='mx-[1vw] py-[0.5vh]   font-semibold'>LinkedIn</a>
+            <a target='_blank' href="https://github.com/iamtripathi25" className='mx-[1vw] py-[0.5vh]   font-semibold '>Github</a>
             
             </div>
             <div className=''>
