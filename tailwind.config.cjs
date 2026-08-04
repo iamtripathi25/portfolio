@@ -5,10 +5,8 @@ module.exports = {
 		extend: {
 			fontFamily:{
 				
-				'Pop':['Poppins', 'sans-serif'],
-				'Outward':'Outward',
-				'Right':['Righteous', 'cursive'],
-				'Inter':['Inter', 'sans-serif']
+				'Manrope':['Manrope', 'sans-serif'],
+				'Instrument':['Instrument Serif', 'serif']
 			}
 		},
 	},

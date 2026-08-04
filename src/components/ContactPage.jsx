@@ -1,33 +1,66 @@
-import React, { useState } from 'react'
-
-import { useScroll,useTransform } from 'framer-motion'
-import searchUp from '../images/SearchDown.svg'
+import { motion } from 'framer-motion'
 
 function ContactPage() {
+  const socialLinks = [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/iamtripathi25' },
+    { label: 'GitHub', href: 'https://github.com/iamtripathi25' },
+    { label: 'Twitter', href: 'https://twitter.com/Iamtripathi25' },
+  ]
 
-    
-  return (<>
-  
-    <div className=' mx-[2vw] mt-[25vh] mb-[5vh] font-Inter'>
-        <h1 className='lg:text-[2.6vw] md:text-[3vw]   text-[4vw] font-semibold  tracking-tight text-center 2xl:leading-[5vh] xl:leading-[4vh] lg:leading-[3vh]  md:leading-[2.5vh] leading-[2.2vh] mb-[20vh]'>Eager to Embrace New Opportunities!<br/> Let's Collaborate for Success!</h1>
-        <div className=' flex flex-row justify-between items-center text-[4vw] md:text-[2.5vw] lg:text-[2vw] xl:text-[1.4vw]'>
-            <div>
-            <a target='_blank' href="https://twitter.com/Iamtripathi25" className='mx-[1vw] py-[0.5vh]   font-semibold '>Twitter</a>
-            <a target='_blank' href="https://www.linkedin.com/in/iamtripathi25" className='mx-[1vw] py-[0.5vh]   font-semibold'>LinkedIn</a>
-            <a target='_blank' href="https://github.com/iamtripathi25" className='mx-[1vw] py-[0.5vh]   font-semibold '>Github</a>
-            
-            </div>
-            <div className=''>
-            <a href="#" className='flex flex-row mx-[1vw] py-[0.5vh] hover:text-slate-500 '>
-                <h1 className='xl:text-[1.2vw] lg:text-[2vw] md:text-[2.5vw] text-[4vw]'> Back to top</h1> 
-            <img className='lg:w-[1.2vw] md:w-[1.7vw] w-[3vw] ml-[0.5vw] rotate-180' src={searchUp} alt="up" />
-                
+  const scrollToTop = (event) => {
+    event.preventDefault()
+    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
+  }
+
+  return (
+    <section className='font-Manrope pt-32 pb-6 md:pt-40 md:pb-8 lg:pt-48 lg:pb-6'>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className='pt-10'
+      >
+        <div className='mx-auto max-w-5xl px-6 md:px-10'>
+          <h2 className='text-4xl font-semibold leading-tight tracking-tight text-neutral-100 sm:text-5xl lg:text-7xl'>
+            Have a backend, platform, or product idea worth building?
+          </h2>
+
+          <div className='mt-10 flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between'>
+            <a
+              href='mailto:iamtripathi.25@gmail.com'
+              className='group inline-flex w-fit items-center justify-center gap-3 border border-[#F2613F] bg-[#F2613F] px-6 py-4 text-sm font-bold text-white transition-all duration-500 ease-out hover:-translate-y-1 hover:bg-transparent hover:text-[#F2613F] hover:shadow-[0_18px_42px_rgba(242,97,63,0.24)]'
+            >
+              Email Me
+              <span className='transition-transform duration-500 ease-out group-hover:translate-x-1'>-&gt;</span>
+            </a>
+
+            <div className='flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-neutral-300 md:text-base'>
+              {socialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  target='_blank'
+                  rel='noreferrer'
+                  href={link.href}
+                  className='transition-colors duration-300 hover:text-[#F2613F]'
+                >
+                  {link.label}
                 </a>
+              ))}
             </div>
+          </div>
         </div>
-    </div>
 
-  </>
+        <div className='mt-28 flex items-center justify-between gap-6 border-t border-neutral-800 px-6 pt-5 text-sm text-neutral-500 md:px-10 lg:mt-32'>
+          <p>Aman Tripathi</p>
+          <a href='/' onClick={scrollToTop} className='group inline-flex items-center gap-2 font-semibold text-neutral-300 transition-colors duration-300 hover:text-[#F2613F]'>
+            Back to top
+            <span className='transition-transform duration-300 group-hover:-translate-y-1'>^</span>
+          </a>
+        </div>
+      </motion.div>
+    </section>
   )
 }
 

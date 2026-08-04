@@ -1,71 +1,61 @@
-import { Fragment } from 'react'
+import { motion } from 'framer-motion'
 import { WorkData } from '../data/WorkData'
-import {motion} from 'framer-motion'
-import downKey from '../images/SearchDown.svg'
-
 
 function WorkCard() {
-  
   return (
-<>
-<div className=" mx-[1vw] mt-[20vh]">
-  <div className='overflow-hidden font-Inter text-[3vw] sm:text-[2.4vw] md:text-[2vw] lg:text-[1.4vw]  mx-[4vw]'>
-    <motion.div initial={{ y: '100%' }} whileInView={{ y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className=" flex flex-row justify-between">
-            <div className="basis-1/2 flex flex-row ">
-                <h1 >Selected Work </h1>
-                <img className="w-[3vw] sm:w-[1.5vw] lg:w-[1vw]  ml-[1vw]  lg:ml-[0.5vw]" src={downKey} alt=""/>
-            </div>
-            <h1 className=''>( Discover )</h1>
-    </motion.div>
-  </div>
-  <div className='overflow-hidden mt-[1vh] mb-[2vh]'>
-    <motion.span  initial={{opacity :0 }}   whileInView={{  opacity:1 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="block h-[0.1vh] mx-[4vw]  bg-slate-600 rounded-full"></motion.span>
-  </div>
-  
-   {
-      WorkData.map((value,key)=>{
-      
-        return(
-          
-          <Fragment key={key}>
-          <motion.div whileInView={{opacity:1,y:0}} viewport={{ once: true }} initial={{opacity:0,y:100}}  transition={{ duration: 0.6,delay:0.2 }} >
-          <div  className=' mx-[4vw] items-center flex flex-row font-Inter text-[3.6vw] sm:text-[3vw] md:text-[1.8vw] lg:text-[1.4vw] xl:text-[1.2vw]  tracking-tighter font-normal '>
-            <h1 className=' basis-2/4 '>{value.company}</h1>
-            <h2 className='basis-2/4 text-right md:text-left '>{value.position}</h2>
-            <h2 className='basis-1/4 hidden md:block  '>{value.date}</h2>
+    <section id="work" className="font-Manrope px-6 pt-28 md:px-10 md:pt-36">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-end"
+        >
+          <div>
+            <p className="mb-4 text-sm font-semibold uppercase text-[#F2613F]">Experience</p>
+            <h2 className="text-5xl font-semibold leading-none tracking-tight text-neutral-100 sm:text-6xl lg:text-8xl">
+              Work.
+            </h2>
           </div>
-          <div className='  font-Inter flex flex-col  md:flex-row  mx-[4vw]  mt-[10vh] mb-[15vh]  md:px-[3vw]  '>
-            <h1 className='basis-1/4 text-[4vw] sm:text-[3vw] md:text-[2vw] lg:text-[1.5vw]   '>{`(00${key+1})`}</h1>
-            <p className='basis-3/4 lg:basis-2/3 text-[5vw] sm:text-[4vw] md:text-[3vw] lg:text-[2.5vw]  lg:leading-[3vw] leading-[7vw] sm:leading-[4vw]   py-[2vw] md:py-0  tracking-normal font-bold  '>{value.smallDesc}</p>
-          </div>
-            </motion.div>
+          <p className="max-w-2xl text-base font-medium leading-8 text-neutral-300 md:text-lg lg:ml-auto">
+            Recent roles and collaborations across backend systems, serverless infrastructure, data processing, and product-focused interfaces.
+          </p>
+        </motion.div>
 
+        <div className="border-t border-neutral-800">
+          {WorkData.map((item, index) => (
+            <motion.article
+              key={`${item.company}-${item.position}`}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className="grid gap-6 border-b border-neutral-800 py-8 md:grid-cols-[4rem_minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-10 md:py-10"
+            >
+              <p className="text-sm font-semibold text-[#F2613F]">{`0${index + 1}`}</p>
 
-         
-          
-          </Fragment>
-        )
-      })
-    }
-    
-    
+              <div>
+                <h3 className="text-2xl font-semibold leading-tight text-neutral-100 md:text-3xl">
+                  {item.company}
+                </h3>
+                <p className="mt-3 text-base font-semibold text-[#F2613F]">
+                  {item.position}
+                </p>
+                <p className="mt-2 text-sm font-semibold uppercase text-neutral-500">
+                  {item.date}
+                </p>
+              </div>
 
-   
-
-        
-    </div>
-
-
-    
-  
-
-
- 
- 
-</>
-    
+              <p className="max-w-3xl text-lg font-semibold leading-8 text-neutral-200 md:text-2xl md:leading-10">
+                {item.smallDesc}
+              </p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
   )
-
 }
 
 export default WorkCard

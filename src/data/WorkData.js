@@ -2,37 +2,37 @@ export const WorkData=[
    {
         'position':'Software Engineer - Backend',
         'company':'Stealth Healthtech Startup',
-        'smallDesc':'Building a secure, scalable serverless AI Healthtech platform a Stanford spin-off project.',
-        'date':'Nov 2025'
+        'smallDesc':'Building a secure, scalable serverless AI healthtech platform for a Stanford spin-off project, with production APIs, event pipelines, and role-based access.',
+        'date':'Nov 2025 - Present'
         
     },
    {
         'position':'Java Developer',
         'company':'Tata Consultancy Services',
-        'smallDesc':'Developed and deployed robust scheduling and listener mechanisms within a Java-based REST API for a government initiative, leveraging Hibernate for efficient data management, resulting in a 30% increase in data processing efficiency and enhanced system responsiveness.',
-        'date':'FEB 2024'
+        'smallDesc':'Built Java backend services for high-volume event processing, replacing legacy data flows with resilient scheduling, listener mechanisms, and stateless processing.',
+        'date':'Feb 2024 - Oct 2025'
         
     },
    {
         'position':'Frontend Developer',
         'company':'Hackathon: Error-404 0.5',
-        'smallDesc':'2 Days and 1 Night long hackathon organized by M.H. Saboo Siddik College of Engineering. The task was to develop a Decentraized Doctor Consultation WebApp using Blockchain.',
-        'date':'MAR 2023'
+        'smallDesc':'Built the frontend for a blockchain-based doctor consultation web app during a 2-day hackathon, focusing on patient workflows and accessible healthcare interactions.',
+        'date':'Mar 2023'
     
     },
    {
         'position':'Frontend Developer Intern',
         'company':'Agriyaan Technologies',
-        'smallDesc':'Worked on a startup project by contributing in UI/UX Design and developed the Frontend part of it. Designed multiple pages using Figma software. Working with Django Backend Developer was a new lesson for me.',
-        'date':'OCT 2021'
+        'smallDesc':'Designed and implemented frontend screens for a startup product, collaborating with a Django backend developer and translating Figma flows into working interfaces.',
+        'date':'Oct 2021'
        
 
     },
     {
         'position':'UI Designer',
         'company':'Exposys Data Labs',
-        'smallDesc':'Worked as a UI/UX Designer Intern. Designed Mobile Application of Internship Website of the Company. Developed 2 whole Design of the Application. Performed WireFrames and lots of animation.',
-        'date':'JUL 2021'
+        'smallDesc':'Created mobile app wireframes and UI concepts for an internship platform, exploring interaction patterns, screen flows, and motion ideas.',
+        'date':'Jul 2021'
         
     }
 

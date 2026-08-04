@@ -1,20 +1,85 @@
-import React from 'react'
-import { easeIn, motion } from 'framer-motion'
-function Home() {
-  return (
-    <div id="home" className=" mx-[4vw] mt-[15vw] md:mt-[3vw] ">   
-        <motion.div className='overflow-hidden md:text-center text-left'>
-        < motion.h1 className=" ease-in  font-Outward text-[70vw] md:text-[43vw]   pt-[7vw] lg:text-[42vw] leading-[50vw] md:leading-[30vw] lg:leading-[25vw] lg:pt-[12vh]" initial={{ y: '100%',scale:0}}   animate={{  y: 0,scale:1 }} transition={{ duration: 0.8 }}>AMAN TRIPATHI</motion.h1>
-        </motion.div>
-        
-       
-        
-        <motion.p initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:1}}  className="font-Inter pl-[1vw]  text-[4vw] sm:text-[3.5vw] md:text-[3vw] lg:text-[2.5vw] xl:text-[1.5vw]  sm:leading-[3.5vw] md:leading-[3vw] lg:leading-[2.5vw] xl:leading-[2vw] sm:w-[70vw] lg:w-[50vw] leading-[5vw]  pt-[10vw] md:pt-0">I am a Software Developer with a passion for building innovative applications that push the boundaries of what's possible.</motion.p>    
-        {/* <div className=' overflow-hidden '>
+import { motion } from 'framer-motion'
 
-        <motion.button initial={{y:100,opacity:0}} animate={{y:0,opacity:1}} transition={{delay:1.2}}  className=" duration-300 easy-in  lg:text-[1.7vw] md:text-[3vw] text-[4vw] mt-[5vh] font-normal font-Inter border-2 border-solid border-black lg:px-[7vw] md:px-[10vw] px-[15vw] lg:py-[1.2vh] py-[1vh]  rounded-full hover:bg-violet-500 hover:border-violet-800 hover:text-white hover:scale-110 transition-all ">About Me</motion.button>      
-        </div> */}
-    </div>
+const focusItems = [
+  {
+    title: 'Serverless backend systems',
+    description: 'AWS Lambda, Cognito, S3, CloudFormation, and APIs built for low-latency healthtech workflows.',
+  },
+  {
+    title: 'Event-driven processing',
+    description: 'Pipelines handling 500K+ events, 1M+ records, retries, dead-letter queues, and resilient production flows.',
+  },
+  {
+    title: 'Secure data platforms',
+    description: 'Multi-tenant RBAC, JWT authorization, DynamoDB isolation, and backend reliability for sensitive systems.',
+  },
+]
+
+function Home() {
+  const scrollToSection = (event, id) => {
+    event.preventDefault()
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
+  }
+
+  return (
+    <section id="home" className="mx-auto grid min-h-[calc(100vh-4.5rem)] max-w-7xl content-center px-6 py-20 md:px-10 lg:py-24">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.55fr)] lg:items-end lg:justify-between">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="font-Manrope"
+          >
+            <p className="mb-3 text-base font-semibold text-[#F2613F]">
+              Hey, I am Aman.
+            </p>
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-neutral-100 sm:text-5xl md:text-6xl lg:text-7xl">
+              I build reliable software for real-world workflows.
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="mt-9 flex flex-col gap-3 font-Manrope text-sm font-semibold sm:flex-row"
+          >
+            <a className="group inline-flex items-center justify-center gap-2 border border-[#F2613F] bg-[#F2613F] px-5 py-3 text-white shadow-[0_0_0_rgba(242,97,63,0)] transition-all duration-500 ease-out hover:-translate-y-1 hover:bg-transparent hover:text-[#F2613F] hover:shadow-[0_14px_34px_rgba(242,97,63,0.22)]" href="/" onClick={(event) => scrollToSection(event, 'project')}>
+              <span>View Projects</span>
+              <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
+            </a>
+            <a className="group inline-flex items-center justify-center gap-2 border border-neutral-700 px-5 py-3 text-neutral-100 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-neutral-100 hover:bg-neutral-900 hover:shadow-[0_14px_34px_rgba(245,245,245,0.08)]" href="/" onClick={(event) => scrollToSection(event, 'contact')}>
+              <span>Contact Me</span>
+              <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
+            </a>
+          </motion.div>
+        </div>
+
+        <motion.aside
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="border-t border-neutral-800 pt-6 font-Manrope lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
+        >
+          <p className="text-sm font-semibold uppercase leading-6 text-[#F2613F]">Focus</p>
+          <div className="mt-5 space-y-5 text-neutral-200">
+            {focusItems.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.55 + index * 0.16 }}
+              >
+                <h2 className="text-lg font-semibold text-neutral-100">{item.title}</h2>
+                <p className="mt-1 text-sm leading-6 text-neutral-400">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.aside>
+      </div>
+    </section>
   )
 }
 

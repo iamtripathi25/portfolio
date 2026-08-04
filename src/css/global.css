@@ -1,4 +1,20 @@
 /* styles.css */
+html {
+  color-scheme: dark;
+  background: #0C0C0C;
+}
+
+body {
+  margin: 0;
+  background: #0C0C0C;
+  color: #f5f5f5;
+  font-family: 'Manrope', sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
 .hide-scrollbar {
     scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
