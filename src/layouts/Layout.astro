@@ -1,6 +1,8 @@
 ---
 import Navbar from "../components/Navbar";
 import "../css/global.css";
+
+const { title = "Aman Tripathi" } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth bg-[#0C0C0C] text-neutral-100">
@@ -15,7 +17,7 @@ import "../css/global.css";
 		<meta name="google-site-verification" content="iBb-mCyn03Va6FTLF-3fU3SncOH7L1vYDy5k0PBoXkM" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Aman Tripathi</title>
+	<title>{title}</title>
 </head>
 <body class="min-h-screen bg-[#0C0C0C] text-neutral-100">
 	<!--Navbar -->

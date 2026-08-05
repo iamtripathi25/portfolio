@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="About Me | Aman Tripathi">
+  <section class="font-Manrope mx-auto min-h-[calc(100vh-4.5rem)] max-w-7xl px-6 py-14 md:px-10 md:py-20">
+    <div class="grid gap-8 lg:grid-cols-12 lg:gap-y-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.28em] text-[#F2613F] lg:col-span-4 lg:col-start-2">
+        About Me
+      </p>
+
+      <h1 class="text-[clamp(3.3rem,8vw,7.5rem)] font-semibold uppercase leading-none tracking-normal text-neutral-100 lg:col-span-10 lg:col-start-2 lg:row-start-2">
+        <span class="block">I like the world</span>
+        <span class="block">better outside.</span>
+      </h1>
+
+      <div class="lg:col-span-7 lg:col-start-2 lg:row-start-3 lg:mt-4">
+        <img
+          src="/images/aman-about-crop.jpg"
+          alt="Aman Tripathi outdoors"
+          width="1125"
+          height="703"
+          class="aspect-[16/10] w-full object-cover"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+        />
+      </div>
+
+      <div class="self-end lg:col-span-4 lg:col-start-9 lg:row-start-3">
+        <p class="max-w-xl text-base leading-8 text-neutral-300 md:text-lg md:leading-9">
+          I like days that move a little off-script. Sometimes that means taking my camera out and noticing
+          small frames around the city; sometimes it is a cycling route, a late-night game, or a road trip with
+          good music, simple food, and no rush to get anywhere.
+        </p>
+
+        <p class="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+          Photography / Cycling / Road Trips / Video Games
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
