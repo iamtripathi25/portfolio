@@ -1,12 +1,24 @@
 import { useEffect } from 'react'
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+const withBasePath = (path) => `${basePath}${path}` || '/'
+const getPathInSite = () => {
+  const { pathname } = window.location
+
+  if (basePath && pathname.startsWith(basePath)) {
+    return pathname.slice(basePath.length) || '/'
+  }
+
+  return pathname
+}
+
 function Navbar() {
   const links = [
-    { label: 'Home', href: '/' },
-    { label: 'Work', href: '/#work', id: 'work' },
-    { label: 'Projects', href: '/#project', id: 'project' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/#contact', id: 'contact' },
+    { label: 'Home', href: withBasePath('/') },
+    { label: 'Work', href: withBasePath('/#work'), id: 'work' },
+    { label: 'Projects', href: withBasePath('/#project'), id: 'project' },
+    { label: 'About', href: withBasePath('/about/') },
+    { label: 'Contact', href: withBasePath('/#contact'), id: 'contact' },
   ]
 
   useEffect(() => {
@@ -20,7 +32,7 @@ function Navbar() {
   }, [])
 
   const handleLinkClick = (event, link) => {
-    if (!link.id || window.location.pathname !== '/') {
+    if (!link.id || getPathInSite() !== '/') {
       return
     }
 

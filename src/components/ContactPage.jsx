@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+const withBasePath = (path) => `${basePath}${path}` || '/'
+
 function ContactPage() {
   const socialLinks = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/iamtripathi25' },
@@ -54,7 +57,7 @@ function ContactPage() {
 
         <div className='mt-28 flex items-center justify-between gap-6 border-t border-neutral-800 px-6 pt-5 text-sm text-neutral-500 md:px-10 lg:mt-32'>
           <p>Aman Tripathi</p>
-          <a href='/' onClick={scrollToTop} className='group inline-flex items-center gap-2 font-semibold text-neutral-300 transition-colors duration-300 hover:text-[#F2613F]'>
+          <a href={withBasePath('/')} onClick={scrollToTop} className='group inline-flex items-center gap-2 font-semibold text-neutral-300 transition-colors duration-300 hover:text-[#F2613F]'>
             Back to top
             <span className='transition-transform duration-300 group-hover:-translate-y-1'>^</span>
           </a>

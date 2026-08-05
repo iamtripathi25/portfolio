@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
+const withBasePath = (path) => `${basePath}${path}` || '/'
+
 const focusItems = [
   {
     title: 'Serverless backend systems',
@@ -46,11 +49,11 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.18 }}
             className="mt-9 flex flex-col gap-3 font-Manrope text-sm font-semibold sm:flex-row"
           >
-            <a className="group inline-flex items-center justify-center gap-2 border border-[#F2613F] bg-[#F2613F] px-5 py-3 text-white shadow-[0_0_0_rgba(242,97,63,0)] transition-all duration-500 ease-out hover:-translate-y-1 hover:bg-transparent hover:text-[#F2613F] hover:shadow-[0_14px_34px_rgba(242,97,63,0.22)]" href="/" onClick={(event) => scrollToSection(event, 'project')}>
+            <a className="group inline-flex items-center justify-center gap-2 border border-[#F2613F] bg-[#F2613F] px-5 py-3 text-white shadow-[0_0_0_rgba(242,97,63,0)] transition-all duration-500 ease-out hover:-translate-y-1 hover:bg-transparent hover:text-[#F2613F] hover:shadow-[0_14px_34px_rgba(242,97,63,0.22)]" href={withBasePath('/#project')} onClick={(event) => scrollToSection(event, 'project')}>
               <span>View Projects</span>
               <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
             </a>
-            <a className="group inline-flex items-center justify-center gap-2 border border-neutral-700 px-5 py-3 text-neutral-100 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-neutral-100 hover:bg-neutral-900 hover:shadow-[0_14px_34px_rgba(245,245,245,0.08)]" href="/" onClick={(event) => scrollToSection(event, 'contact')}>
+            <a className="group inline-flex items-center justify-center gap-2 border border-neutral-700 px-5 py-3 text-neutral-100 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-neutral-100 hover:bg-neutral-900 hover:shadow-[0_14px_34px_rgba(245,245,245,0.08)]" href={withBasePath('/#contact')} onClick={(event) => scrollToSection(event, 'contact')}>
               <span>Contact Me</span>
               <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
             </a>
