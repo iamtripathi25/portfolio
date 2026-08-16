@@ -18,7 +18,7 @@ const focusItems = [
   },
 ]
 
-function Home() {
+function Home({ latestNote }) {
   const scrollToSection = (event, id) => {
     event.preventDefault()
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -80,6 +80,29 @@ function Home() {
               </motion.div>
             ))}
           </div>
+
+          {latestNote && (
+            <motion.a
+              href={latestNote.href}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.55 + focusItems.length * 0.16 }}
+              className="group mt-6 block border-t border-neutral-800 pt-6"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F2613F]">Latest note</p>
+
+              <h2 className="mt-3 text-lg font-semibold leading-snug text-neutral-100 transition-colors duration-300 group-hover:text-[#F2613F]">
+                {latestNote.title}
+              </h2>
+
+              <span className="mt-2 inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors duration-300 group-hover:text-[#F2613F]">
+                {latestNote.readingTime}
+                <span aria-hidden="true" className="transition-transform duration-500 ease-out group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
+            </motion.a>
+          )}
         </motion.aside>
       </div>
     </section>

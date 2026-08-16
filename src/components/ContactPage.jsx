@@ -26,6 +26,14 @@ function ContactPage() {
         className='pt-10'
       >
         <div className='mx-auto max-w-5xl px-6 md:px-10'>
+          <p className='mb-5 flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.18em] text-[#F2613F]'>
+            <span aria-hidden='true' className='relative flex h-2 w-2'>
+              <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-[#F2613F] opacity-70' />
+              <span className='relative inline-flex h-2 w-2 rounded-full bg-[#F2613F]' />
+            </span>
+            Open to work
+          </p>
+
           <h2 className='text-4xl font-semibold leading-tight tracking-tight text-neutral-100 sm:text-5xl lg:text-7xl'>
             Have a backend, platform, or product idea worth building?
           </h2>
@@ -53,6 +61,10 @@ function ContactPage() {
               ))}
             </div>
           </div>
+
+          <p className='mt-12 max-w-3xl border-l-2 border-[#F2613F] pl-6 text-xl font-semibold leading-9 text-neutral-200 md:text-2xl md:leading-10'>
+            Rejection or ghosting? Ghosting — rejection follows, my brother!
+          </p>
         </div>
 
         <div className='mt-28 flex items-center justify-between gap-6 border-t border-neutral-800 px-6 pt-5 text-sm text-neutral-500 md:px-10 lg:mt-32'>

@@ -16,9 +16,8 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const links = [
     { label: 'Home', href: withBasePath('/') },
-    { label: 'Work', href: withBasePath('/#work'), id: 'work' },
-    { label: 'Projects', href: withBasePath('/#project'), id: 'project' },
     { label: 'About', href: withBasePath('/about/') },
+    { label: 'Blog', href: withBasePath('/blog/') },
     { label: 'Contact', href: withBasePath('/#contact'), id: 'contact' },
   ]
 

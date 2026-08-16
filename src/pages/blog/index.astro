@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import JournalList from '../../components/JournalList'
+import { BlogData } from '../../data/BlogData'
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+const formatDate = (value) =>
+  new Date(value).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
+
+// Entry numbers count up from the oldest post, so an entry keeps its number for good.
+const entryNumbers = new Map(
+  [...BlogData]
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .map((post, index) => [post.slug, index + 1])
+)
+
+// Newest first for display; only the listing fields, so post bodies stay out of the client bundle.
+const posts = [...BlogData]
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    category: post.category,
+    readingTime: post.readingTime,
+    date: formatDate(post.date),
+    isoDate: post.date,
+    number: entryNumbers.get(post.slug),
+    href: `${base}/blog/${post.slug}/`,
+  }))
+---
+
+<Layout
+  title="Journal | Aman Tripathi"
+  description="Working notes by Aman Tripathi on backend systems, cloud infrastructure, and AI engineering — what broke, what I misunderstood, and what I would do differently."
+  path="/blog/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: 'Journal — Aman Tripathi',
+      description:
+        'Working notes on backend systems, cloud infrastructure, and AI engineering.',
+      url: new URL(`${base}/blog/`, Astro.site).href,
+      inLanguage: 'en',
+      author: { '@type': 'Person', name: 'Aman Tripathi' },
+      blogPost: posts.map((post) => ({
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.isoDate,
+        articleSection: post.category,
+        url: new URL(post.href, Astro.site).href,
+      })),
+    })} />
+  </Fragment>
+
+  <section class="font-Manrope mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+    <div class="grid gap-8 lg:grid-cols-12">
+      <p class="text-sm font-semibold uppercase tracking-[0.28em] text-[#F2613F] lg:col-span-4 lg:col-start-2">
+        Journal
+      </p>
+
+      <h1 class="text-[clamp(3.3rem,7.2vw,7rem)] font-semibold uppercase leading-none tracking-normal text-neutral-100 lg:col-span-11 lg:col-start-2 lg:row-start-2">
+        <span class="block lg:whitespace-nowrap">Learning out</span>
+        <span class="block lg:whitespace-nowrap">in the open.</span>
+      </h1>
+
+      <p class="max-w-3xl text-base leading-8 text-neutral-300 md:text-lg md:leading-9 lg:col-span-8 lg:col-start-2 lg:row-start-3 lg:mt-4">
+        Notes I write for myself and leave public — what broke, what I misunderstood, and what I would
+        do differently. Less tutorial, more working notebook.
+      </p>
+    </div>
+
+    <div class="mt-16 md:mt-24 lg:mx-auto lg:w-[91.666667%] lg:pl-[9.0909%]">
+      <JournalList client:load posts={posts} />
+    </div>
+  </section>
+</Layout>
