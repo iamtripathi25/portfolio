@@ -18,7 +18,11 @@ const latestNote = latestPost && {
   href: `${base}/blog/${latestPost.slug}/`,
 }
 ---
-<Layout>
+<Layout
+    title="Aman Tripathi | Backend & Cloud Engineer"
+    description="Aman Tripathi is a backend and cloud engineer building serverless APIs, event-driven data pipelines, and secure multi-tenant platforms on AWS."
+    path="/"
+>
     <Home client:visible latestNote={latestNote}/>
     <WorkCard client:visible/>
 
