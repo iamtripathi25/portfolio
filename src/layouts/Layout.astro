@@ -37,6 +37,15 @@ const canonical = path ? new URL(`${base.replace(/\/$/, '')}${path}`, Astro.site
 	{description && <meta name="twitter:description" content={description} />}
 
 	<slot name="head" />
+
+	<!-- Google Analytics — in the layout so every page is counted, not just the home page. -->
+	<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-BCNWFWXY86"></script>
+	<script is:inline>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-BCNWFWXY86');
+	</script>
 </head>
 <body class="min-h-screen bg-[#0C0C0C] text-neutral-100">
 	<!--Navbar -->
