@@ -16,6 +16,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://iamtripathi25.github.io/portfolio/blog/insertion-sort/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://iamtripathi25.github.io/portfolio/blog/divide-and-conquer/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://iamtripathi25.github.io/portfolio/blog/merge-sort/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://iamtripathi25.github.io/portfolio/blog/why-i-am-keeping-this-journal/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>

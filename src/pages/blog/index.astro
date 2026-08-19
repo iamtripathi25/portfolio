@@ -8,20 +8,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 const formatDate = (value) =>
   new Date(value).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
 
+// Entries sharing a date fall back to their position in BlogData, which is the order
+// they are meant to be read in. Explicit, so numbering never rides on sort stability.
+const sequence = new Map(BlogData.map((post, index) => [post.slug, index]))
+const readingOrder = (a, b) => sequence.get(a.slug) - sequence.get(b.slug)
+
 // Entry numbers count up from the oldest post, so an entry keeps its number for good.
 const entryNumbers = new Map(
   [...BlogData]
-    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .sort((a, b) => new Date(a.date) - new Date(b.date) || readingOrder(a, b))
     .map((post, index) => [post.slug, index + 1])
 )
 
-// Newest first for display; only the listing fields, so post bodies stay out of the client bundle.
+// Newest first for display, which means same-day entries descend too — the listing runs
+// 04, 03, 02 ... Only the listing fields, so post bodies stay out of the client bundle.
 const posts = [...BlogData]
-  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .sort((a, b) => new Date(b.date) - new Date(a.date) || readingOrder(b, a))
   .map((post) => ({
     slug: post.slug,
     title: post.title,
     excerpt: post.excerpt,
+    topic: post.topic,
     category: post.category,
     readingTime: post.readingTime,
     date: formatDate(post.date),
@@ -51,7 +58,7 @@ const posts = [...BlogData]
         headline: post.title,
         description: post.excerpt,
         datePublished: post.isoDate,
-        articleSection: post.category,
+        articleSection: post.topic ? [post.topic, post.category] : post.category,
         url: new URL(post.href, Astro.site).href,
       })),
     })} />
