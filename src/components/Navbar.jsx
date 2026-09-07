@@ -17,7 +17,6 @@ function Navbar() {
   const links = [
     { label: 'Home', href: withBasePath('/') },
     { label: 'About', href: withBasePath('/about/') },
-    { label: 'Blog', href: withBasePath('/blog/') },
     { label: 'Contact', href: withBasePath('/#contact'), id: 'contact' },
   ]
 
